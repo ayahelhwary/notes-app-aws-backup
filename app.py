@@ -4,7 +4,7 @@ from datetime import datetime
 
 app = Flask(__name__)
 
-# الاتصال بقاعدة البيانات باستخدام mariadb
+# Connect to mariadb
 try:
     conn = mariadb.connect(
         user="noteuser",
@@ -17,7 +17,7 @@ except mariadb.Error as e:
     print(f"Error connecting to MariaDB Platform: {e}")
     exit(1)
 
-# إنشاء الجدول إذا مش موجود
+# Create table, if it doesn't exist
 cursor.execute("""
 CREATE TABLE IF NOT EXISTS notes (
     id INT AUTO_INCREMENT PRIMARY KEY,
